@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <title>YelpCamp</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous"
+  />
+  <!-- FontAwesome -->
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+    crossorigin="anonymous"
+  />
+  <!-- Going to check the browser version and then it'll add some special classes to our page in case the browser is older like IE8 and that will allow our CSS to latch onto those classes that are added by modernizer and make our page more cross-browser -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+    type="text/javascript"
+    async
+  ></script>
+  <link rel="stylesheet" href="/stylesheets/main.css" />
+  <!-- Make site responsive on mobile/tablet -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="/">YelpCamp</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <!-- Example of ternary operators
+          It's simply as single line if/else statement that says 
+          "if there is a local variable namged page and it is equal to the string campgrounds, then give this list item a class of 'active' otherwise don't give any class at all" -->
+          <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
+            <a class="nav-link" href="/campgrounds">Home</a>
+          </li>
+          <li class="nav-item <%= typeof page !== 'undefined' && page === 'about' ? 'active' : '' %>">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <% if (!currentUser){ %>
+            <li
+              class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"
+            >
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li
+              class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"
+            >
+              <a class="nav-link" href="/register">Sign Up</a>
+            </li>
+          <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link">Signed In As <%= currentUser.username %></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="container">
+    <!-- Just having error exist is not enough to display as error is currently empty but its not undefined as if its an empty error, means empty array which still has a length of 0 and we dont wanna show this red warning for that case, same to success below -->
+    <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+    <% } %> <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+    <% } %>
+  </div>
+  <div class="container">

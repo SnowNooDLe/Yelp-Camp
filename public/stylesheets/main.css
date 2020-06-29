@@ -1,0 +1,68 @@
+/* Thumnail styles */
+.thumbnail {
+  padding: 0;
+}
+
+/* img under thumbnail only */
+.thumbnail img {
+  width: 100%;
+}
+
+/* caption-full inside thumbnail */
+.thumbnail .caption-full {
+  padding: 9px;
+}
+
+.delete-form {
+  display: inline;
+}
+
+.time-stamp {
+  font-size: 12px;
+}
+
+.comment-header {
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+}
+
+.comment-header-div {
+  vertical-align: middle;
+}
+.comment-main {
+  padding: 5px 20px;
+}
+
+.required-star {
+  color: red;
+}
+
+/* Sticky footer styles */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  padding-top: 75px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+/* Campground show page delete button */
+.delete-form {
+  display: inline-block;
+}
